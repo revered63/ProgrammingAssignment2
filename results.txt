@@ -1,0 +1,34 @@
+> source("cachematrix.R")
+
+> c <- rbind(c(1, -1/4), c(-1/4, 1)) 
+
+> c
+      [,1]  [,2]
+[1,]  1.00 -0.25
+[2,] -0.25  1.00
+
+> x <- makeCacheMatrix(c)
+
+> x$set(c)
+
+> i <- cacheSolve(x)
+Inverse calculated and stored
+
+> i
+          [,1]      [,2]
+[1,] 1.0666667 0.2666667
+[2,] 0.2666667 1.0666667
+
+> c %*% i
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+
+> i <- cacheSolve(x)
+Getting cached matrix inverse data
+
+> c %*% i
+     [,1] [,2]
+[1,]    1    0
+[2,]    0    1
+>
